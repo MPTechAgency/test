@@ -1,0 +1,16 @@
+version: "3"
+services:
+  vaultwarden:
+    image: vaultwarden/server:latest
+    container_name: vaultwarden
+    restart: unless-stopped
+    environment:
+      - ADMIN_TOKEN=your_admin_token  # Cambia questo con un token forte per l'amministratore
+    volumes:
+      - ./vw-data:/data  # Monta una directory locale per persistere i dati
+    ports:
+      - "8080:80"  # Modifica la porta se necessario
+    logging:
+      options:
+        max-size: "10m"
+        max-file: "3"
