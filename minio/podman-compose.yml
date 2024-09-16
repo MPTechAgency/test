@@ -1,0 +1,21 @@
+version: "3"
+services: minio
+  minio:  minio:latest
+  container_name: minio
+  restart: unless-stopped
+  environment:
+    MINIO_ROOT_USER=admin
+    MINIO_ROOT_PASSWORD=MPTechAgency
+    MINIO_SERVER_URL=http://minio.mptechagency.it
+    MINIO_BROWSER=on
+    MINIO_PROMETHEUS_AUTH_TYPE=jwt
+    MINIO_UPDATE=off
+    MINIO_STORAGE_CLASS_STANDARD="EC:4"
+    MINIO_KMS_MASTER_KEY=mykeyid:base64encodedkey
+    MINIO_DOMAIN=mptechagency.it
+    volumes:
+      - /minio:/data
+
+  ports:
+    9000:9000
+    9001:9001
